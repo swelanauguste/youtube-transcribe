@@ -3,19 +3,27 @@
 {% load crispy_forms_tags %}
 
 {% block head_title %}
-Transcripts
+New - 
 {% endblock head_title %}
 
 {% block content %}
 <div class="min-vh-100">
     <div class="container mt-5 pt-5">
-        <h2 class="text-center">YouTube Transcript</h2>
-        <br>
-        <form class="col-lg-8 mx-auto" action=""
+        <h2 class="text-center">Office of the Parliament Saint Lucia</h2>
+        <hr>
+        <br><br>
+        <form class="col-lg-6 mx-auto"
+            action=""
             method="post">
             {% csrf_token %}
             {{form|crispy}}
+            <div class="text-end small">
+                <a class="text-muted small px-3"
+                    target="_blank"
+                    href="https://swelanauguste.digital/">kingship</a>
+            </div>
         </form>
+
     </div>
 </div>
 {% endblock content %}

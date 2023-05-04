@@ -2,22 +2,35 @@
 
 
 {% block head_title %}
-Transcripts
+Transcripts -
 {% endblock head_title %}
 
 
 {% block content %}
 <div class="min-vh-100">
-    <div class="container mt-5">
+    <div class="mt-5 col-lg-6 mx-auto">
         <h2>Transcripts</h2>
         <hr>
-        <ol>
-            {% for ob in object_list %}
-            <li><a class="text-dark" href="{{ ob.get_absolute_url }}">{{ob.title}}</a></li>
-            {% empty %}
-            <p>Empty</p>
-            {% endfor %}
-        </ol>
+        <div class="table-responsive">
+            <table class="table table-hover table-sm small">
+                <tbody>
+                    {% for ob in object_list %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td><a class="text-dark text-decoration-none"
+                                href="{{ ob.get_absolute_url }}">{{ob.title}}</a>
+                        </td>
+                        <td>{{ob.created_at}}</td>
+                    </tr>
+                    {% empty %}
+                    <p class="text-center">No Transcripts</p>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
+
+
 {% endblock content %}

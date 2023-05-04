@@ -23,6 +23,7 @@ class Transcribe(models.Model):
     uid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     video_id = models.CharField(max_length=255, unique=True, null=True, blank=True)
     transcribed = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_created=True)
 
     def get_absolute_url(self):
         return reverse("detail", kwargs={"slug": self.slug})

@@ -12,7 +12,7 @@ class AddTranscribeForm(forms.ModelForm):
         widgets = {
             "url": TextInput(
                 attrs={
-                    "class": "rounded-pill py-2 shadow",
+                    "class": "rounded-pill py-3 shadow",
                 }
             )
         }
