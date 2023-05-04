@@ -1,7 +1,5 @@
 import re
 import uuid
-from urllib.request import urlopen
-import simplejson
 from django.db import models
 from django.urls import reverse
 from youtube_transcript_api import YouTubeTranscriptApi

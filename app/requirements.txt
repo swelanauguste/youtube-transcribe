@@ -2,4 +2,4 @@ Django==4.2.1
 django-crispy-forms==2.0
 youtube-transcript-api==0.6.0
 crispy-bootstrap5==0.7
-simplejson==3.19.1
+gunicorn
