@@ -9,4 +9,13 @@ class AddTranscribeForm(forms.ModelForm):
         model = Transcribe
         fields = ["url"]
 
-        widgets = {"url": TextInput(attrs={"class": "rounded-pill py-3"})}
+        widgets = {
+            "url": TextInput(
+                attrs={
+                    "class": "rounded-pill py-2 shadow",
+                }
+            )
+        }
+        labels = {
+            "url": "",
+        }

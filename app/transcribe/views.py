@@ -1,10 +1,16 @@
+import re
+
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.generic import CreateView, DetailView, ListView
 from youtube_transcript_api import YouTubeTranscriptApi
-from django.http import HttpResponseRedirect
-from .models import Transcribe
+from youtube_transcript_api.formatters import TextFormatter
+
 from .forms import AddTranscribeForm
-# YouTubeTranscriptApi.get_transcript(video_id)
+from .models import Transcribe
 
 
 class TranscribeListView(ListView):
@@ -16,14 +22,21 @@ class TranscribeDetailView(DetailView):
     # slug_url_kwarg = "video_id"
 
 
-class TranscribeCreateView(CreateView):
+def get_video_id(url):
+    pattern = r"(?<=v=)[\w-]+"
+    match = re.search(pattern, url)
+    if match:
+        video_id = match.group()
+    return video_id
+
+
+class TranscribeCreateView(SuccessMessageMixin, CreateView):
     model = Transcribe
     form_class = AddTranscribeForm
     
-    # def post(self, request, *args, **kwargs):
-    #     form = BookCreateForm(request.POST)
-    #     if form.is_valid():
-    #         book = form.save()
-    #         book.save()
-    #         return HttpResponseRedirect(reverse_lazy('books:detail', args=[book.id]))
-    #     return render(request, 'books/book-create.html', {'form': form})
+    
+    # def form_valid(self, form):
+    #     form.instance.created_by = self.request.user
+    #     return super().form_valid(form)
+    
+    

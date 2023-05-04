@@ -7,14 +7,11 @@ Transcripts
 {% endblock head_title %}
 
 {% block content %}
-<div class="container mt-3">
-    
-{{object.uid}} <br>
-{{object.video_id}} <br>
-{{object.url}} <br>
-<hr>
-
-{{object.transcribed}}
-
+<div class="container mt-3 border rounded-4 p-5 col-lg-6 mx-auto shadow">
+    <p>{{object.title}}</p>
+    <hr>
+    <div class="px-5">
+        <p>{{object.transcribed}}</p>
+    </div>
 </div>
 {% endblock content %}

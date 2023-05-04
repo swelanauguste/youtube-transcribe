@@ -7,13 +7,15 @@ Transcripts
 {% endblock head_title %}
 
 {% block content %}
-<div class="container mt-3" style="position: fixed; top:30%; left:15%;">
-    <h2 class="text-center">YouTube Transcript</h2>
-    <br>
-    <form  action=""
-        method="post">
-        {% csrf_token %}
-        {{form|crispy}}
-    </form>
+<div class="min-vh-100">
+    <div class="container mt-5 pt-5">
+        <h2 class="text-center">YouTube Transcript</h2>
+        <br>
+        <form class="col-lg-8 mx-auto" action=""
+            method="post">
+            {% csrf_token %}
+            {{form|crispy}}
+        </form>
+    </div>
 </div>
 {% endblock content %}
