@@ -5,6 +5,8 @@ from .models import Transcribe
 
 
 class AddTranscribeForm(forms.ModelForm):
+   
+
     class Meta:
         model = Transcribe
         fields = ["url"]

@@ -7,8 +7,17 @@
 {% endblock head_title %}
 
 {% block content %}
-<div class="container mt-3 border rounded-4 p-5 col-lg-6 mx-auto shadow">
-    <p>{{object.title}}</p>
+<div class="container mt-3 border rounded-4 p-5 col-lg-8 mx-auto shadow">
+    <p class="display-6">{{object.title}}</p>
+    <hr>
+    <div class="text-end">
+        <p><span title="word count">Word count: {{object.word_count}}</span> |
+            Cost per word: <span
+                title="per word">XCD${{object.price_per_word}}</span> | Total
+            cost: <span
+                title="cost">XCD${{object.get_cost_of_transcript|floatformat:2}}</span>
+        </p>
+    </div>
     <hr>
     <div class="px-5">
         <p>{{object.transcribed}}</p>
