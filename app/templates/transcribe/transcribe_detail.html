@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block head_title %}
+Transcripts
+{% endblock head_title %}
+
+{% block content %}
+<div class="container mt-3">
+    
+{{object.uid}} <br>
+{{object.video_id}} <br>
+{{object.url}} <br>
+<hr>
+
+{{object.transcribed}}
+
+</div>
+{% endblock content %}

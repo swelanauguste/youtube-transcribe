@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}
+    Transcripts
+{% endblock head_title %}
+    
+
+{% block content %}
+<div class="container mt-5">
+<a class="text-dark small" href="{% url 'trans-list' %}">List</a>
+<hr>
+<ol>
+    {% for ob in object_list %}
+    <li><a href="{{ ob.get_absolute_url }}">{{ob}}</a></li>
+    {% empty %}
+    <p>Empty</p>
+    {% endfor %}
+</ol>
+</div>
+{% endblock content %}
+    
