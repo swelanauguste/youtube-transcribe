@@ -13,7 +13,9 @@
 # python manage.py flush --noinput
 python manage.py migrate
 python manage.py makemigrations
-python manage.py createsuperuser --username kingship --email kingship.lc@gmail.com --noinput
+python manage.py migrate
+
+# python manage.py createsuperuser --username kingship --email kingship.lc@gmail.com --noinput
 
 # python manage.py add_qualifications
 # python manage.py add_skills
@@ -24,6 +26,6 @@ python manage.py createsuperuser --username kingship --email kingship.lc@gmail.c
 # python manage.py add_titles
 
 
-python manage.py collectstatic --noinput
+# python manage.py collectstatic --noinput
 
 exec "$@"
