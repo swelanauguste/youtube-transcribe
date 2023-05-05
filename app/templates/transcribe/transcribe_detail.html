@@ -11,11 +11,15 @@
     <p class="display-6">{{object.title}}</p>
     <hr>
     <div class="text-end">
-        <p><span title="word count">Word count: {{object.word_count}}</span> |
-            Cost per word: <span
-                title="per word">XCD${{object.price_per_word}}</span> | Total
-            cost: <span
-                title="cost">XCD${{object.get_cost_of_transcript|floatformat:2}}</span>
+        <p>
+            Word count: 
+            <span title="word count">{{object.word_count}}</span> |
+            Cost per word: 
+            <span title="per word">XCD${{object.price_per_word}}</span>
+            | Total cost: 
+            <span title="cost">XCD${{object.get_cost_of_transcript|floatformat:2}}</span>
+            | Length: 
+            <span title="time">{{object.video_len}}</span>
         </p>
     </div>
     <hr>

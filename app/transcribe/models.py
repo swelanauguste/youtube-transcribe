@@ -1,6 +1,7 @@
 import re
 import uuid
 
+import googleapiclient.discovery
 import requests
 from bs4 import BeautifulSoup
 from django.db import models
@@ -23,16 +24,47 @@ def get_word_count(words):
     return word_count
 
 
+def get_video_length(video_id):
+    api_service_name = "youtube"
+    api_version = "v3"
+    api_key = (
+        "AIzaSyCRZrpkCf1_argyAhaaRTmJqgVjXLfIZ-Y"  # Replace with your actual API key
+    )
+    youtube = googleapiclient.discovery.build(
+        api_service_name, api_version, developerKey=api_key
+    )
+
+    request = youtube.videos().list(part="contentDetails", id=video_id)
+    response = request.execute()
+
+    duration_str = response["items"][0]["contentDetails"]["duration"]
+    duration_str = duration_str.replace('PT', "").replace("H", ":").replace('M', ":").replace('S', "")
+    # Parse the duration string to extract the length in seconds
+    # duration = 0
+    # time_parts = {"H": 3600, "M": 60, "S": 1}
+    # for part in duration_str[2:].split("M"):
+    #     for time_unit in time_parts:
+    #         if time_unit in part:
+    #             duration += int(part.split(time_unit)[0]) * time_parts[time_unit]
+    return duration_str
+
+
 class Transcribe(models.Model):
     url = models.URLField(max_length=255, unique=True)
     title = models.CharField(max_length=255, unique=True, null=True, blank=True)
     slug = models.SlugField(max_length=255, unique=True, null=True, blank=True)
     uid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     video_id = models.CharField(max_length=255, unique=True, null=True, blank=True)
+    video_len = models.CharField(max_length=20, null=True, blank=True)
     transcribed = models.TextField(blank=True, null=True)
     word_count = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
-    price_per_word = models.DecimalField(decimal_places=5, max_digits=9, default=0.00157)
+    price_per_word = models.DecimalField(
+        decimal_places=5, max_digits=9, default=0.00157
+    )
+    
+    class Meta:
+        ordering = ['-created_at']
 
     def get_absolute_url(self):
         return reverse("detail", kwargs={"slug": self.slug})
@@ -51,9 +83,10 @@ class Transcribe(models.Model):
             self.slug = slugify(self.title)
         if not self.word_count:
             self.word_count = get_word_count(self.transcribed)
-
+        if not self.video_len:
+            self.video_len = get_video_length(self.video_id)
         super(Transcribe, self).save(*args, **kwargs)
-        
+
     def get_cost_of_transcript(self):
         return self.word_count * self.price_per_word
 

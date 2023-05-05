@@ -1,19 +1,13 @@
 # from django.test import TestCase
 
 # # Create your tests here.
-from youtube_transcript_api import YouTubeTranscriptApi
-from youtube_transcript_api.formatters import (
-    JSONFormatter,
-    SRTFormatter,
-    TextFormatter,
-    WebVTTFormatter,
-)
+import datetime
+import time
 
-video_id = "BfMSK6GtBFU"
-transcript = YouTubeTranscriptApi.get_transcript(video_id)
-formatter = WebVTTFormatter()
-
-formatted = formatter.format_transcript(transcript)
+time_str = "PT3H22M45S"
 
 
-print(formatted)
+print(time_cln)
+
+x = time.strptime(time_cln, "%H:%M:S")
+datetime.datetime()
