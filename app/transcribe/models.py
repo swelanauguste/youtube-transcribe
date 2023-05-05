@@ -32,7 +32,7 @@ class Transcribe(models.Model):
     transcribed = models.TextField(blank=True, null=True)
     word_count = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
-    price_per_word = models.DecimalField(decimal_places=5, max_digits=9, default=0.04)
+    price_per_word = models.DecimalField(decimal_places=5, max_digits=9, default=0.00157)
 
     def get_absolute_url(self):
         return reverse("detail", kwargs={"slug": self.slug})
