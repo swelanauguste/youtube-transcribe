@@ -9,7 +9,9 @@ from django.urls import reverse
 from django.utils.text import slugify
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api.formatters import TextFormatter
+from django.conf import settings
 
+GOOGLE_API_KEY = settings.GOOGLE_API_KEY
 
 def get_youtube_title(url):
     response = requests.get(url)
@@ -28,7 +30,7 @@ def get_video_length(video_id):
     api_service_name = "youtube"
     api_version = "v3"
     api_key = (
-        "AIzaSyCRZrpkCf1_argyAhaaRTmJqgVjXLfIZ-Y"  # Replace with your actual API key
+        GOOGLE_API_KEY  # Replace with your actual API key
     )
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, developerKey=api_key
