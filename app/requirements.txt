@@ -7,3 +7,4 @@ beautifulsoup4==4.12.2
 google-api-python-client==2.86.0
 google-auth-oauthlib==1.0.0
 google-auth-httplib2==0.1.0
+openai-whisper==20230314

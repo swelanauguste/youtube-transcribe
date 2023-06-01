@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block head_title %}
+New -
+{% endblock head_title %}
+
+{% block content %}
+<div class="min-vh-100">
+    <div class="container mt-5 pt-5">
+        <br><br>
+        <form class="col-lg-6 mx-auto"
+            action=""
+            method="post"
+            enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form|crispy}}
+            <hr>
+            <div class="text-end">
+                <button class="btn btn-outline-dark rounded-pill px-5"
+                    type="submit">Submit</button>
+            </div>
+            <div class="text-end small">
+                <a class="text-muted small px-3"
+                    target="_blank"
+                    href="https://swelanauguste.digital/">kingship</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
