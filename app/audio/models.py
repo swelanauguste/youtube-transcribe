@@ -7,7 +7,7 @@ def user_directory_path(instance, filename):
 
 
 class AudioTranscription(models.Model):
-    audio_file = models.FileField(upload_to="audio-files")
+    audio_file = models.FileField(upload_to="audio-files", max_length=255)
     transcript = models.TextField(blank=True)
 
     def remove_prefix(file_path, prefix):
