@@ -16,12 +16,12 @@ class AudioTranscriptionCreateView(CreateView):
             transcription = form.save()
             # Perform transcription using OpenAI Whisper
             model = whisper.load_model("base")
-
             file_path = transcription.audio_file.path
-            result = model.transcribe(file_path, fp16=False)
-            # with open(file_path, "rb") as f:
-            #     file_contents = f.read()
-            transcription.transcript = result["text"]
+            print(file_path)
+            # result = model.transcribe(file_path, fp16=False)
+            with open(file_path, "rb") as f:
+                file_contents = f.read()
+            transcription.transcript = model.transcribe(file_path, fp16=False)['text']
             transcription.save()
             return redirect("audio-detail", pk=transcription.pk)
         return render(request, "audio/audiotranscription_form.html", {"form": form})
