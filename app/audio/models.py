@@ -1,5 +1,12 @@
+import warnings
+
 from django.db import models
 from django.urls import reverse
+from numba import jit
+from numba.core.errors import NumbaDeprecationWarning, NumbaPendingDeprecationWarning
+
+warnings.simplefilter("ignore", category=NumbaDeprecationWarning)
+warnings.simplefilter("ignore", category=NumbaPendingDeprecationWarning)
 
 
 def user_directory_path(instance, filename):
@@ -7,6 +14,7 @@ def user_directory_path(instance, filename):
 
 
 class AudioTranscription(models.Model):
+    name = models.CharField(max_length=255, unique=True, null=True, blank=True)
     audio_file = models.FileField(upload_to="audio-files", max_length=255)
     transcript = models.TextField(blank=True)
 
@@ -29,7 +37,4 @@ class AudioTranscription(models.Model):
         return reverse("audio-detail", kwargs={"pk": self.pk})
 
     def __str__(self):
-        prefix = "audio-files/"
-        if self.audio_file.name.startswith(prefix):
-            return f"{self.audio_file.name[len(prefix):]}"
-        return f"{self.audio_file.name}"
+        return f"{self.name}"
