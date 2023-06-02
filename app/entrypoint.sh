@@ -15,7 +15,7 @@ python manage.py migrate
 python manage.py makemigrations
 python manage.py migrate
 
-# python manage.py createsuperuser --username kingship --email kingship.lc@gmail.com --noinput
+python manage.py createsuperuser --username kingship --email kingship.lc@gmail.com --noinput
 
 # python manage.py add_qualifications
 # python manage.py add_skills

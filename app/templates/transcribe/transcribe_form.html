@@ -14,6 +14,7 @@ New -
             action=""
             method="post">
             {% csrf_token %}
+            <span class="small">YouTube video link</span>
             {{form|crispy}}
             <div class="text-end small">
                 <a class="text-muted small px-3"

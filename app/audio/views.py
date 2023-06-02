@@ -18,7 +18,7 @@ class AudioTranscriptionCreateView(CreateView):
             model = whisper.load_model("base")
 
             file_path = transcription.audio_file.path
-            result = model.transcribe(file_path)
+            result = model.transcribe(file_path, fp16=False)
             # with open(file_path, "rb") as f:
             #     file_contents = f.read()
             transcription.transcript = result["text"]
