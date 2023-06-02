@@ -23,7 +23,7 @@ Audio Transcription -
                     <tr>
                         <th scope="row">{{forloop.counter}}</th>
                         <td><a class="text-dark text-decoration-none"
-                                href="{{ ob.get_absolute_url }}">{{ob}}</a>
+                                href="{{ ob.get_absolute_url }}">{{ob.name}}</a>
                         </td>
                         <td>{{ob.get_word_count}}</td>
                         <td>XCD${{ob.get_cost_of_transcript|floatformat:2}}

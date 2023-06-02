@@ -6,4 +6,7 @@ from .models import AudioTranscription
 class AudioTranscriptionForm(forms.ModelForm):
     class Meta:
         model = AudioTranscription
-        fields = ("audio_file",)
+        fields = (
+            "name",
+            "audio_file",
+        )
