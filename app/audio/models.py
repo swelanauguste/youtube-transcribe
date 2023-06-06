@@ -9,12 +9,13 @@ warnings.simplefilter("ignore", category=NumbaDeprecationWarning)
 warnings.simplefilter("ignore", category=NumbaPendingDeprecationWarning)
 
 
-def user_directory_path(instance, filename):
-    return "audio_files".format(instance.user.id, filename)
+# def user_directory_path(instance, filename):
+#     return "audio_files".format(instance.user.id, filename)
 
 
 class AudioTranscription(models.Model):
     name = models.CharField(max_length=255, unique=True, null=True, blank=True)
+    status = models.CharField(max_length=20, default="processing")
     audio_file = models.FileField(upload_to="audio-files", max_length=255)
     transcript = models.TextField(blank=True)
 
