@@ -19,10 +19,10 @@ class AudioTranscription(models.Model):
     audio_file = models.FileField(upload_to="audio-files", max_length=255)
     transcript = models.TextField(blank=True)
 
-    def remove_prefix(file_path, prefix):
-        if file_path.startswith(prefix):
-            return file_path[len(prefix) :]
-        return file_path
+    # def remove_prefix(file_path, prefix):
+    #     if file_path.startswith(prefix):
+    #         return file_path[len(prefix) :]
+    #     return file_path
 
     @property
     def get_word_count(self):

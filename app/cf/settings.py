@@ -128,3 +128,6 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
+
+CELERY_BROKER_URL = 'redis://redis.kingship.info/0'
+CELERY_RESULT_BACKEND = 'redis://redis.kingship.info/0'

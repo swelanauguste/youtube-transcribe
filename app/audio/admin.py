@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import AudioTranscription
+
+
+@admin.register(AudioTranscription)
+class AudioTranscriptionAdmin(admin.ModelAdmin):
+    list_display = ['name', 'status']

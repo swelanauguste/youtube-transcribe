@@ -26,6 +26,7 @@ Audio Transcription -
                                 href="{{ ob.get_absolute_url }}">{{ob.name}}</a>
                         </td>
                         <td>{{ob.get_word_count}}</td>
+                        <td>{{ob.status}}</td>
                         <td>XCD${{ob.get_cost_of_transcript|floatformat:2}}
                         </td>
                         <td>{{ob.created_at}}</td>
