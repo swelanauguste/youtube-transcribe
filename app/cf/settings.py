@@ -14,9 +14,9 @@ SECRET_KEY = "django-insecure-4&3b*4q46suq=wpnfb0514j=_+trmhx)h&!p^=@)^5!xo7fb0m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["ootp.kingship.info", '*']
+ALLOWED_HOSTS = ["ootp.transcribe1.info", 'localhost']
 
-CSRF_TRUSTED_ORIGINS = ["https://ootp.kingship.info"]
+CSRF_TRUSTED_ORIGINS = ["https://transcribe1.kingship.info/"]
 
 
 # Application definition
@@ -129,5 +129,5 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 
-CELERY_BROKER_URL = 'redis://redis.kingship.info/0'
-CELERY_RESULT_BACKEND = 'redis://redis.kingship.info/0'
+CELERY_BROKER_URL = 'redis://redis1.kingship.info/0'
+CELERY_RESULT_BACKEND = 'redis://redis1.kingship.info/0'
