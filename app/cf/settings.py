@@ -16,7 +16,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["transcribe1.kingship.info", 'localhost']
 
-CSRF_TRUSTED_ORIGINS = ["https://transcribe1.kingship.info/"]
+CSRF_TRUSTED_ORIGINS = ["https://transcribe1.kingship.info"]
 
 
 # Application definition
