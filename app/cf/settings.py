@@ -130,10 +130,10 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 
-# CELERY_BROKER_URL = "redis://192.168.0.104:6379/0"
-# CELERY_RESULT_BACKEND = "redis://192.168.0.104:6379/0"
-CELERY_BROKER_URL = 'redis://redis1.kingship.info/0'
-CELERY_RESULT_BACKEND = 'redis://redis1.kingship.info/0'
+CELERY_BROKER_URL = "redis://192.168.0.104:6379/0"
+CELERY_RESULT_BACKEND = "redis://192.168.0.104:6379/0"
+# CELERY_BROKER_URL = 'redis://redis1.kingship.info/0'
+# CELERY_RESULT_BACKEND = 'redis://redis1.kingship.info/0'
 
 
 # Celery Configuration Options
