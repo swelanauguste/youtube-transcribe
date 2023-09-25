@@ -14,7 +14,7 @@ SECRET_KEY = "django-insecure-4&3b*4q46suq=wpnfb0514j=_+trmhx)h&!p^=@)^5!xo7fb0m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["transcribe1.kingship.info", 'localhost']
+ALLOWED_HOSTS = ["transcribe1.kingship.info", "localhost"]
 
 CSRF_TRUSTED_ORIGINS = ["https://transcribe1.kingship.info"]
 
@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "transcribe",
     "audio",
+    "django_celery_results",
 ]
 
 MIDDLEWARE = [
@@ -129,7 +130,16 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 
-CELERY_BROKER_URL = 'redis://192.168.0.104:6379/0'
-CELERY_RESULT_BACKEND = 'redis://192.168.0.104:6379/0'
-# CELERY_BROKER_URL = 'redis://redis1.kingship.info/0'
-# CELERY_RESULT_BACKEND = 'redis://redis1.kingship.info/0'
+# CELERY_BROKER_URL = "redis://192.168.0.104:6379/0"
+# CELERY_RESULT_BACKEND = "redis://192.168.0.104:6379/0"
+CELERY_BROKER_URL = 'redis://redis1.kingship.info/0'
+CELERY_RESULT_BACKEND = 'redis://redis1.kingship.info/0'
+
+
+# Celery Configuration Options
+CELERY_TIMEZONE = "America/St_Lucia"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_CACHE_BACKEND = 'django-cache'
