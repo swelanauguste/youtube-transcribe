@@ -1,9 +1,12 @@
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -31,6 +34,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "transcribe",
+    "pwa",
     # "audio",
     # "django_celery_results",
 ]
@@ -129,7 +133,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
-# GOOGLE_API_KEY = 'AIzaSyDf3LHbZFmDcLDBpGM8UC1WinqktZmi3yg'
+print(GOOGLE_API_KEY)
 
 # CELERY_BROKER_URL = "redis://192.168.0.104:6379/0"
 # CELERY_RESULT_BACKEND = "redis://192.168.0.104:6379/0"
@@ -144,3 +148,38 @@ GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 
 # CELERY_RESULT_BACKEND = 'django-db'
 # CELERY_CACHE_BACKEND = 'django-cache'
+
+
+PWA_APP_NAME = "kingship"
+PWA_APP_DESCRIPTION = "YouTube transcription app"
+PWA_APP_THEME_COLOR = "#0A0302"
+PWA_APP_BACKGROUND_COLOR = "#ffffff"
+PWA_APP_DISPLAY = "standalone"
+PWA_APP_SCOPE = "/"
+PWA_APP_ORIENTATION = "any"
+PWA_APP_START_URL = "/"
+PWA_APP_STATUS_BAR_COLOR = "default"
+PWA_APP_ICONS = [{"src": "/static/images/my_app_icon.png", "sizes": "160x160"}]
+PWA_APP_ICONS_APPLE = [{"src": "/static/images/my_apple_icon.png", "sizes": "160x160"}]
+PWA_APP_SPLASH_SCREEN = [
+    {
+        "src": "/static/images/icons/splash-640x1136.png",
+        "media": "(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)",
+    }
+]
+PWA_APP_DIR = "ltr"
+PWA_APP_LANG = "en-US"
+PWA_APP_SHORTCUTS = [
+    {
+        "name": "Shortcut",
+        "url": "/target",
+        "description": "Shortcut to a page in my application",
+    }
+]
+PWA_APP_SCREENSHOTS = [
+    {
+        "src": "/static/images/icons/splash-750x1334.png",
+        "sizes": "750x1334",
+        "type": "image/png",
+    }
+]

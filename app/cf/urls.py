@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
+    path("", include("pwa.urls")),
     path("", include("transcribe.urls")),
     # path("audio/", include("audio.urls")),
     path("admin/", admin.site.urls),
