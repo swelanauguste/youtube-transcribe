@@ -1,29 +1,13 @@
 version: '3.8'
 
 services:
-  web:
+  app:
     build: ./app
-    command: gunicorn cf.wsgi:application --bind 0.0.0.0:8010
+    command: python manage.py runserver 0.0.0.0:8017
     volumes:
       - ./app/:/usr/src/app/
     ports:
-      - 8010:8010
+      - 8017:8017
+    restart: unless-stopped
     env_file:
       - ./.env
-    # network_mode: "host"        
-    restart: unless-stopped
-  #   depends_on:
-  #     - db
-  # db:
-  #   # network_mode: "host"        
-  #   image: postgres:13.0-alpine
-  #   volumes:
-  #     - postgres_data:/var/lib/postgresql/data/
-  #   environment:
-  #     - POSTGRES_USER=williams
-  #     - POSTGRES_PASSWORD=williams
-  #     - POSTGRES_DB=williams
-  #   restart: always
-
-# volumes:
-#   postgres_data:

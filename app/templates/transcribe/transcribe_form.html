@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block head_title %}
-New - 
+New -
 {% endblock head_title %}
 
 {% block content %}
@@ -16,10 +16,9 @@ New -
             {% csrf_token %}
             <span class="small ms-3">YouTube video link</span>
             {{form|crispy}}
-            <div class="text-end small">
-                <a class="text-muted small px-3"
-                    target="_blank"
-                    href="https://swelanauguste.digital/">kingship</a>
+            <div class="text-end mx-2">
+                <button class="btn btn-outline-dark rounded-pill px-5"
+                    type="submit">Submit</button>
             </div>
         </form>
     </div>

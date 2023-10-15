@@ -9,6 +9,6 @@ class TranscribeAdmin(admin.ModelAdmin):
         "title",
         "video_id",
         "url",
-        "price_per_word",
+        "price_per_min",
         "get_cost_of_transcript",
     ]
