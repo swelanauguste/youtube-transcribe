@@ -27,8 +27,8 @@ Transcripts -
                             href="{{ ob.get_absolute_url }}">{{ob.title}}</a>
                     </td>
                     <td>{{ob.video_len}}</td>
-                    <td>XCD${{ob.price_per_min|floatformat:2}}/word</td>
-                    <td>XCD${{ob.get_cost_of_transcript|floatformat:2}}</td>
+                    <!-- <td>XCD${{ob.price_per_min|floatformat:2}}/word</td>
+                    <td>XCD${{ob.get_cost_of_transcript|floatformat:2}}</td> -->
                     <td>{{ob.created_at}}</td>
                 </tr>
                 {% empty %}
